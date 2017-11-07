@@ -1,7 +1,7 @@
 # Media-Query-Mixin
 My lovely media-query-mixin
 * Use the variable as in many projects (small, medium, large)
-  Futhermore each variable has two subdivisions, for higher detail (…_a, …_b)
+* Futhermore each variable has two subdivisions, for higher detail (…_a, …_b)
 ## How to use
 The mixin "mq" has 4 options
 1. choose a section like "@include mq(medium)" or "@include mq(medium_b)"
@@ -19,6 +19,7 @@ The mixin "mq" has 4 options
 |-----------------------------------------------------------------|
 ```
 ## Notice
-Make sure you have an em calculator. Of course, you can use this awesome feature with "px" (you have to rewrite the mixin), but i've read a [revealing article](https://zellwk.com/blog/media-query-units/) by [zellwk](https://github.com/zellwk).
+Make sure you have an em calculator. 
+Of course, you can use this awesome feature with "px" (you have to rewrite the mixin), but i've read a [revealing article](https://zellwk.com/blog/media-query-units/) by [zellwk](https://github.com/zellwk).
 ------------------
 Made with ♥ by [chrstn-hsbrg](https://github.com/chrstn-hsbrg)
