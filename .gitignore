@@ -1,0 +1,10 @@
+# OS
+__MACOSX
+._*
+.MacOSX
+.DS_Store
+*.swp
+
+# Default-Ignore
+\#_*
+~_*
