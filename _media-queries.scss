@@ -1,3 +1,17 @@
+// Of course, you can use this awesome feature with "px" (you have to rewrite the mixin) -> read revealing article](https://zellwk.com/blog/media-query-units/ by zellwk
+$browser-context: 16;
+@function emCalc($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1em;
+}
+
 // divisions
 $small-end:      emCalc(767px);
 $medium-start:   emCalc(768px);
