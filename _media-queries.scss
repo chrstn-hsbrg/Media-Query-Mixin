@@ -1,10 +1,14 @@
-// https://github.com/chrstn-hsbrg/Media-Query-Mixin/blob/master/_media-queries.scss
 /*
+
+https://github.com/chrstn-hsbrg/Media-Query-Mixin/blob/master/_media-queries.scss
+
 The mixin "mq" has 4 options
-1. choose a section like ```@include mq(medium)``` or ```@include mq(medium_b)```
-2. choose a detailed section (with start and end) like ```@include mq(small_b,medium)```
-3. choose a pixel-accurate implementation like ```@include mq(350px,805px)```
-4. use in each option the key ```x``` for a open start or open end like ```@include mq(x,805px)``` or ```@include mq(medium_b,x)```
+* choose a section like "@include mq(medium)" or "@include mq(medium_b)"
+* choose a detailed section (with start and end) like "@include mq(small_b,medium)"
+* choose a pixel-accurate implementation like "@include mq(350px,805px)"
+* use in each option the key "x" for a open start or open end like "@include mq(x,805px)" or "@include mq(medium_b,x)"
+
+           a          b          c          d          e
 |-----------------------------------------------------------------|
 |0      479|480    767|768    949|950   1279|1280  1349|1350     ∞|
 |----------|----------|----------|----------|----------|----------|
@@ -12,6 +16,7 @@ The mixin "mq" has 4 options
 |----------|----------|----------|----------|----------|----------|
 | SMALL_A  | SMALL_B  | MEDIUM_A | MEDIUM_B | LARGE_A  | LARGE_B  |
 |-----------------------------------------------------------------|
+
 */
 
 // Of course, you can use this awesome feature with "px" (you have to rewrite the mixin) -> read revealing article](https://zellwk.com/blog/media-query-units/ by zellwk
@@ -28,187 +33,189 @@ $browser-context: 16;
   @return $pixels / $context * 1em;
 }
 
+$mq-a: 480px !default;
+$mq-b: 768px !default;
+$mq-c: 950px !default;
+$mq-d: 1280px !default;
+$mq-e: 1350px !default;
+
 // divisions
-$small-end:      emCalc(767px);
-$medium-start:   emCalc(768px);
-$medium-end:     emCalc(1279px);
-$large-start:    emCalc(1280px);
-
-// detailed subdivisions
-$small_a-end:    emCalc(479px);
-$small_b-start:  emCalc(480px);
-
-$medium_a-end:   emCalc(949px);
-$medium_b-start: emCalc(950px);
-
-$large_a-end:    emCalc(1349px);
-$large_b-start:  emCalc(1350px);
+$small_a-end:    emCalc($mq-a - 1px);
+$small_b-start:  emCalc($mq-a);
+$small-end:      emCalc($mq-b - 1px);
+$medium-start:   emCalc($mq-b);
+$medium_a-end:   emCalc($mq-c - 1px);
+$medium_b-start: emCalc($mq-c);
+$medium-end:     emCalc($mq-d - 1px);
+$large-start:    emCalc($mq-d);
+$large_a-end:    emCalc($mq-e - 1px);
+$large_b-start:  emCalc($mq-e);
 
 
 @mixin mq($min, $max: default) {
-    @if $min == small {
-        @if $max == default {
-            @media only screen and (max-width: $small-end) {
-                @content;
-            }
-        }
-    } @else if $min == small_a {
-        @if $max == default {
-            @media only screen and (max-width: $small_a-end) {
-                @content;
-            }
-        }
-    } @else if $min == small_b {
-        @if $max == default {
-            @media only screen and (min-width: $small_b-start) and (max-width: $small-end) {
-                @content;
-            }
-        } @else if $max == x {
-            @media only screen and (min-width: $small_b-start) {
-                @content;
-            } 
-        } @else if $max == medium {
-            @media only screen and (min-width: $small_b-start) and (max-width: $medium-end) {
-                @content;
-            } 
-        } @else if $max == medium_a {
-            @media only screen and (min-width: $small_b-start) and (max-width: $medium_a-end) {
-                @content;
-            } 
-        } @else if $max == large_a {
-            @media only screen and (min-width: $small_b-start) and (max-width: $large_a-end) {
-                @content;
-            } 
-        } @else {
-            @media only screen and (min-width: $small_b-start) and (max-width: emCalc($max)) {
-                @content;
-            }
-        }
-    } @else if $min == medium {
-        @if $max == default {
-            @media only screen and (min-width: $medium-start) and (max-width: $medium-end) {
-                @content;
-            }
-        } @else if $max == x {
-            @media only screen and (min-width: $medium-start) {
-                @content;
-            } 
-        } @else if $max == large_a {
-            @media only screen and (min-width: $medium-start) and (max-width: $large_a-end) {
-                @content;
-            } 
-        } @else {
-            @media only screen and (min-width: $medium-start) and (max-width: emCalc($max)) {
-                @content;
-            }
-        }
-    } @else if $min == medium_a {
-        @if $max == default {
-            @media only screen and (min-width: $medium-start) and (max-width: $medium_a-end) {
-                @content;
-            }
-        } 
-    } @else if $min == medium_b {
-        @if $max == default {
-            @media only screen and (min-width: $medium_b-start) and (max-width: $medium-end) {
-                @content;
-            } 
-        } @else if $max == x {
-            @media only screen and (min-width: $medium_b-start) {
-                @content;
-            } 
-        } @else if $max == large_a {
-            @media only screen and (min-width: $medium_b-start) and (max-width: $large_a-end) {
-                @content;
-            } 
-        } @else {
-            @media only screen and (min-width: $medium_b-start) and (max-width: emCalc($max)) {
-                @content;
-            }
-        }
-    } @else if $min == large {
-        @if $max == default {
-            @media only screen and (min-width: $large-start) {
-                @content;
-            } 
-        } @else {
-            @media only screen and (min-width: $large-start) and (max-width: emCalc($max)) {
-                @content;
-            }
-        }
-    } @else if $min == large_a {
-        @if $max == default {
-            @media only screen and (min-width: $large-start) and (max-width: $large_a-end) {
-                @content;
-            }
-        }
-    } @else if $min == large_b {
-        @if $max == default {
-            @media only screen and (min-width: $large_b-start) {
-                @content;
-            }
-        } @else {
-            @media only screen and (min-width: $large_b-start) and (max-width: emCalc($max)) {
-                @content;
-            }
-        }
-    } @else if $min == x {
-        @if $max == small {
-            @media only screen and (max-width: $small-end) {
-                @content;
-            }
-        } @else if $max == small_a {
-            @media only screen and (max-width: $small_a-end) {
-                @content;
-            }
-        } @else if $max == medium {
-            @media only screen and (max-width: $medium-end) {
-                @content;
-            }
-        } @else if $max == medium_a {
-            @media only screen and (max-width: $medium_a-end) {
-                @content;
-            }
-        } @else if $max == large_a {
-            @media only screen and (max-width: $large_a-end) {
-                @content;
-            }
-        } @else {
-            @media only screen and (max-width: emCalc($max)) {
-                @content;
-            }
-        }
-    } @else if $max == small {
-        @media only screen and (min-width: emCalc($min)) and (max-width: $small-end) {
-            @content;
-        }
-    } @else if $max == medium {
-        @media only screen and (min-width: emCalc($min)) and (max-width: $medium-end) {
-            @content;
-        }
-    } @else if $max == large {
-        @media only screen and (min-width: emCalc($min)) {
-            @content;
-        }
-    } @else if $max == small_a {
-        @media only screen and (min-width: emCalc($min)) and (max-width: $small_a-end) {
-            @content;
-        }
-    } @else if $max == medium_a {
-        @media only screen and (min-width: emCalc($min)) and (max-width: $medium_a-end) {
-            @content;
-        }
-    } @else if $max == large_a {
-        @media only screen and (min-width: $min) and (max-width: $large_a-end) {
-            @content;
-        }
-    } @else if $max == x {
-        @media only screen and (min-width: emCalc($min)) {
-            @content;
-        }
-    } @else {
-        @media only screen and (min-width: emCalc($min)) and (max-width: emCalc($max)) {
-            @content;
-        }
+  @if $min == small {
+    @if $max == default {
+      @media only screen and (max-width: $small-end) {
+        @content;
+      }
     }
+  } @else if $min == small_a {
+    @if $max == default {
+      @media only screen and (max-width: $small_a-end) {
+        @content;
+      }
+    }
+  } @else if $min == small_b {
+    @if $max == default {
+      @media only screen and (min-width: $small_b-start) and (max-width: $small-end) {
+        @content;
+      }
+    } @else if $max == x {
+      @media only screen and (min-width: $small_b-start) {
+        @content;
+      }
+    } @else if $max == medium {
+      @media only screen and (min-width: $small_b-start) and (max-width: $medium-end) {
+        @content;
+      }
+    } @else if $max == medium_a {
+      @media only screen and (min-width: $small_b-start) and (max-width: $medium_a-end) {
+        @content;
+      }
+    } @else if $max == large_a {
+      @media only screen and (min-width: $small_b-start) and (max-width: $large_a-end) {
+        @content;
+      }
+    } @else {
+      @media only screen and (min-width: $small_b-start) and (max-width: emCalc($max)) {
+        @content;
+      }
+    }
+  } @else if $min == medium {
+    @if $max == default {
+      @media only screen and (min-width: $medium-start) and (max-width: $medium-end) {
+        @content;
+      }
+    } @else if $max == x {
+      @media only screen and (min-width: $medium-start) {
+        @content;
+      }
+    } @else if $max == large_a {
+      @media only screen and (min-width: $medium-start) and (max-width: $large_a-end) {
+        @content;
+      }
+    } @else {
+      @media only screen and (min-width: $medium-start) and (max-width: emCalc($max)) {
+        @content;
+      }
+    }
+  } @else if $min == medium_a {
+    @if $max == default {
+      @media only screen and (min-width: $medium-start) and (max-width: $medium_a-end) {
+        @content;
+      }
+    }
+  } @else if $min == medium_b {
+    @if $max == default {
+      @media only screen and (min-width: $medium_b-start) and (max-width: $medium-end) {
+        @content;
+      }
+    } @else if $max == x {
+      @media only screen and (min-width: $medium_b-start) {
+        @content;
+      }
+    } @else if $max == large_a {
+      @media only screen and (min-width: $medium_b-start) and (max-width: $large_a-end) {
+        @content;
+      }
+    } @else {
+      @media only screen and (min-width: $medium_b-start) and (max-width: emCalc($max)) {
+        @content;
+      }
+    }
+  } @else if $min == large {
+    @if $max == default {
+      @media only screen and (min-width: $large-start) {
+        @content;
+      }
+    } @else {
+      @media only screen and (min-width: $large-start) and (max-width: emCalc($max)) {
+        @content;
+      }
+    }
+  } @else if $min == large_a {
+    @if $max == default {
+      @media only screen and (min-width: $large-start) and (max-width: $large_a-end) {
+        @content;
+      }
+    }
+  } @else if $min == large_b {
+    @if $max == default {
+      @media only screen and (min-width: $large_b-start) {
+        @content;
+      }
+    } @else {
+      @media only screen and (min-width: $large_b-start) and (max-width: emCalc($max)) {
+        @content;
+      }
+    }
+  } @else if $min == x {
+    @if $max == small {
+      @media only screen and (max-width: $small-end) {
+        @content;
+      }
+    } @else if $max == small_a {
+      @media only screen and (max-width: $small_a-end) {
+        @content;
+      }
+    } @else if $max == medium {
+      @media only screen and (max-width: $medium-end) {
+        @content;
+      }
+    } @else if $max == medium_a {
+      @media only screen and (max-width: $medium_a-end) {
+        @content;
+      }
+    } @else if $max == large_a {
+      @media only screen and (max-width: $large_a-end) {
+        @content;
+      }
+    } @else {
+      @media only screen and (max-width: emCalc($max)) {
+        @content;
+      }
+    }
+  } @else if $max == small {
+    @media only screen and (min-width: emCalc($min)) and (max-width: $small-end) {
+      @content;
+    }
+  } @else if $max == medium {
+    @media only screen and (min-width: emCalc($min)) and (max-width: $medium-end) {
+      @content;
+    }
+  } @else if $max == large {
+    @media only screen and (min-width: emCalc($min)) {
+      @content;
+    }
+  } @else if $max == small_a {
+    @media only screen and (min-width: emCalc($min)) and (max-width: $small_a-end) {
+      @content;
+    }
+  } @else if $max == medium_a {
+    @media only screen and (min-width: emCalc($min)) and (max-width: $medium_a-end) {
+      @content;
+    }
+  } @else if $max == large_a {
+    @media only screen and (min-width: $min) and (max-width: $large_a-end) {
+      @content;
+    }
+  } @else if $max == x {
+    @media only screen and (min-width: emCalc($min)) {
+      @content;
+    }
+  } @else {
+    @media only screen and (min-width: emCalc($min)) and (max-width: emCalc($max)) {
+      @content;
+    }
+  }
 }
