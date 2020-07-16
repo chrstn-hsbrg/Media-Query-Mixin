@@ -4,7 +4,8 @@ My lovely media-query-mixin
 * Futhermore each variable has two subdivisions, for higher detail (…_a, …_b)
 ## How to use
 Define your own divisions
-* ```mq-a: 480px;``` is a default var. So you can define your own division
+* ```mq-a: 480px;``` (mq-a … mq-e) is a default var. So you can define your own division
+
 The mixin "mq" has 4 options
 1. choose a section like ```@include mq(medium)``` or ```@include mq(medium_b)```
 2. choose a detailed section (with start and end) like ```@include mq(small_b,medium)```
