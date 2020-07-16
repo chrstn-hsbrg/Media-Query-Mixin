@@ -3,6 +3,8 @@ My lovely media-query-mixin
 * Use the variable as in many projects (small, medium, large)
 * Futhermore each variable has two subdivisions, for higher detail (…_a, …_b)
 ## How to use
+Define your own divisions
+* ```mq-a: 480px;``` is a default var. So you can define your own division
 The mixin "mq" has 4 options
 1. choose a section like ```@include mq(medium)``` or ```@include mq(medium_b)```
 2. choose a detailed section (with start and end) like ```@include mq(small_b,medium)```
@@ -10,6 +12,7 @@ The mixin "mq" has 4 options
 4. use in each option the key ```x``` for a open start or open end like ```@include mq(x,805px)``` or ```@include mq(medium_b,x)```
 ## visual table
 ```
+           a          b          c          d          e
 |-----------------------------------------------------------------|
 |0      479|480    767|768    949|950   1279|1280  1349|1350     ∞|
 |----------|----------|----------|----------|----------|----------|
