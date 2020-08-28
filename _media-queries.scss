@@ -19,8 +19,8 @@ The mixin "mq" has 4 options
 
 */
 
-// Of course, you can use this awesome feature with "px" (you have to rewrite the mixin) -> read revealing article](https://zellwk.com/blog/media-query-units/ by zellwk
-$browser-context: 16;
+// Of course, you can use this awesome feature with "px", but read revealing article: https://zellwk.com/blog/media-query-units/
+$browser-context: 16 !default;
 @function emCalc($pixels, $context: $browser-context) {
   @if (unitless($pixels)) {
     $pixels: $pixels * 1px;
