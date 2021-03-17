@@ -22,5 +22,6 @@ The mixin "mq" has 4 options
 | SMALL_A  | SMALL_B  | MEDIUM_A | MEDIUM_B | LARGE_A  | LARGE_B  |
 |-----------------------------------------------------------------|
 ```
-------------------
-Made with ♥ by [chrstn-hsbrg](https://github.com/chrstn-hsbrg)
+
+## License
+Media-Query-Mixin is MIT licensed.
