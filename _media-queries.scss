@@ -1,5 +1,4 @@
 /*
-
 https://github.com/chrstn-hsbrg/Media-Query-Mixin/blob/master/_media-queries.scss
 
 The mixin "mq" has 4 options
@@ -18,6 +17,7 @@ The mixin "mq" has 4 options
 |-----------------------------------------------------------------|
 
 */
+@use "sass:math";
 
 // Of course, you can use this awesome feature with "px", but read revealing article: https://zellwk.com/blog/media-query-units/
 $browser-context: 16 !default;
@@ -30,7 +30,7 @@ $browser-context: 16 !default;
     $context: $context * 1px;
   }
 
-  @return $pixels / $context * 1em;
+  @return math.div($pixels, $context) * 1em;
 }
 
 $mq-a: 480px !default;
