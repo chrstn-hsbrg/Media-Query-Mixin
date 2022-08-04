@@ -1,11 +1,12 @@
 /*
 https://github.com/chrstn-hsbrg/Media-Query-Mixin/blob/master/_media-queries.scss
 
-The mixin "mq" has 4 options
+The mixin "mq" has 5 options
 * choose a section like "@include mq(medium)" or "@include mq(medium_b)"
 * choose a detailed section (with start and end) like "@include mq(small_b,medium)"
 * choose a pixel-accurate implementation like "@include mq(350px,805px)"
 * use in each option the key "x" for a open start or open end like "@include mq(x,805px)" or "@include mq(medium_b,x)"
+* specify only "touch" and the styles applies only to mobile devices with touch function
 
            a          b          c          d          e
 |-----------------------------------------------------------------|
@@ -53,7 +54,11 @@ $large_b-start:  emCalc($mq-e);
 
 
 @mixin mq($min, $max: default) {
-  @if $min == small {
+  @if $min == touch {
+    @media (hover: none) {
+      @content;
+    }
+  } @else if $min == small {
     @if $max == default {
       @media only screen and (max-width: $small-end) {
         @content;
