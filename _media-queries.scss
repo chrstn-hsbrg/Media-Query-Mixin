@@ -34,22 +34,22 @@ $browser-context: 16 !default;
   @return math.div($pixels, $context) * 1em;
 }
 
-$mq-a: 480px !default;
-$mq-b: 768px !default;
-$mq-c: 950px !default;
+$mq-a:  480px !default;
+$mq-b:  768px !default;
+$mq-c:  950px !default;
 $mq-d: 1280px !default;
 $mq-e: 1350px !default;
 
 // divisions
-$small_a-end:    emCalc($mq-a - 1px);
-$small_b-start:  emCalc($mq-a);
-$small-end:      emCalc($mq-b - 1px);
-$medium-start:   emCalc($mq-b);
-$medium_a-end:   emCalc($mq-c - 1px);
-$medium_b-start: emCalc($mq-c);
-$medium-end:     emCalc($mq-d - 1px);
-$large-start:    emCalc($mq-d);
-$large_a-end:    emCalc($mq-e - 1px);
+$small_a-end:    emCalc($mq-a - 1px) !default;
+$small_b-start:  emCalc($mq-a)       !default;
+$small-end:      emCalc($mq-b - 1px) !default;
+$medium-start:   emCalc($mq-b)       !default;
+$medium_a-end:   emCalc($mq-c - 1px) !default;
+$medium_b-start: emCalc($mq-c)       !default;
+$medium-end:     emCalc($mq-d - 1px) !default;
+$large-start:    emCalc($mq-d        !default);
+$large_a-end:    emCalc($mq-e - 1px) !default;
 $large_b-start:  emCalc($mq-e);
 
 
