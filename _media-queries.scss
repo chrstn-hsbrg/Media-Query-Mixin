@@ -1,4 +1,4 @@
-/*
+/* MIT license - Christian Hausberg 
 https://github.com/chrstn-hsbrg/Media-Query-Mixin/blob/master/_media-queries.scss
 
 The mixin "mq" has 5 options
@@ -20,8 +20,9 @@ The mixin "mq" has 5 options
 */
 @use "sass:math";
 
-// Of course, you can use this awesome feature with "px", but read revealing article: https://zellwk.com/blog/media-query-units/
 $browser-context: 16 !default;
+
+// why use em: https://zellwk.com/blog/media-query-units/
 @function emCalc($pixels, $context: $browser-context) {
   @if (unitless($pixels)) {
     $pixels: $pixels * 1px;
