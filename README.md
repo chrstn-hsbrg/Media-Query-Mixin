@@ -1,4 +1,7 @@
 # Media-Query-Mixin
+
+FYI: This Helper is now available in this repository: [MVC SCSS]([http://example.com](https://github.com/chrstn-hsbrg/mvc-scss))
+
 My lovely media-query-mixin
 * Use the variable as in many projects (small, medium, large)
 * Futhermore each variable has two subdivisions, for higher detail (…_a, …_b)
